@@ -75,6 +75,30 @@
     }
   }
 
+  async function loadPoll() {
+    const box = el('pollBox');
+    if (!box) return;
+    let d = null;
+    try {
+      const r = await fetch('data/poll.json', { cache: 'no-cache' });
+      if (r.ok) d = await r.json();
+    } catch (e) {}
+    if (!d || !d.options) { box.innerHTML = '<p class="poll-empty">投票数据暂时读不到，点下面的按钮直接去 GitHub 投。</p>'; return; }
+    const link = el('pollLink');
+    if (link && d.url) link.href = d.url;
+    const total = d.total || 0;
+    const max = Math.max(1, ...d.options.map(o => o.votes || 0));
+    box.innerHTML = '<div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px">'
+      + '<b style="font-size:15px">' + esc(d.title || '你觉得这个项目值多少钱？') + '</b>'
+      + '<span style="color:var(--muted);font-size:12.5px">' + total + ' 票</span></div>'
+      + d.options.map(o =>
+        '<div class="poll-row"><div class="poll-head"><b>' + esc(o.label) + '</b><span>' + (o.votes || 0) + ' 票 · '
+        + (total ? Math.round((o.votes || 0) / total * 100) : 0) + '%</span></div>'
+        + '<div class="poll-bar"><div class="poll-fill" style="width:' + Math.round((o.votes || 0) / max * 100) + '%"></div></div></div>'
+      ).join('')
+      + (total ? '' : '<p class="poll-empty" style="margin-top:6px">还没有人投票，来做第一个。</p>');
+  }
+
   // 代码块复制
   document.addEventListener('click', e => {
     const btn = e.target.closest('[data-copy]');
@@ -94,4 +118,5 @@
   });
 
   load();
+  loadPoll();
 })();

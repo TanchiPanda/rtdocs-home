@@ -97,6 +97,14 @@ details{background:var(--panel);border:1px solid var(--line);border-radius:12px;
 details[open]{border-color:#3a466a}
 summary{cursor:pointer;font-weight:600;font-size:14.5px}
 details p{color:var(--muted);font-size:13.5px;margin:10px 0 0}
+/* poll */
+.poll-row{margin:10px 0}
+.poll-head{display:flex;justify-content:space-between;font-size:13.5px;margin-bottom:5px}
+.poll-head b{font-weight:600}
+.poll-head span{color:var(--muted);font-variant-numeric:tabular-nums}
+.poll-bar{height:8px;border-radius:6px;background:rgba(255,255,255,.06);overflow:hidden}
+.poll-fill{height:100%;border-radius:6px;background:linear-gradient(90deg,#4f8cff,#7b6cf6);transition:width .6s ease}
+.poll-empty{color:var(--muted);font-size:13.5px}
 footer{border-top:1px solid var(--line);margin-top:40px;padding:34px 0 60px;color:var(--muted);font-size:13px}
 .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:22px}
 .foot-grid h5{color:var(--text);font-size:13.5px;margin:0 0 8px}

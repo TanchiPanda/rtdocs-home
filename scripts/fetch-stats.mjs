@@ -52,6 +52,23 @@ for (const name of REPOS) {
   }
 }
 
+// 价格投票（Discussions poll）
+async function fetchPoll() {
+  const q = `query { repository(owner: "${OWNER}", name: "r6t5-docs-community") { discussion(number: 2) { title url poll { question totalVoteCount options(first: 10) { nodes { option totalVoteCount } } } } } }`;
+  try {
+    const r = await fetch('https://api.github.com/graphql', {
+      method: 'POST',
+      headers: Object.assign({ 'Content-Type': 'application/json', 'User-Agent': 'rtdocs-home-stats' },
+        TOKEN ? { Authorization: 'Bearer ' + TOKEN } : {}),
+      body: JSON.stringify({ query: q }),
+    });
+    const d = await r.json();
+    const disc = (((d.data || {}).repository || {}).discussion) || null;
+    if (disc && disc.poll) return { url: disc.url, title: disc.title, question: disc.poll.question, total: disc.poll.totalVoteCount, options: disc.poll.options.nodes.map(n => ({ label: n.option, votes: n.totalVoteCount })) };
+  } catch (e) { console.warn('poll failed:', e.message); }
+  return null;
+}
+
 fs.mkdirSync(path.dirname(OUT), { recursive: true });
 fs.writeFileSync(OUT, JSON.stringify({
   updatedAt: new Date().toISOString(),
@@ -59,3 +76,9 @@ fs.writeFileSync(OUT, JSON.stringify({
   repos,
 }, null, 2) + '\n');
 console.log('written', OUT);
+
+const poll = await fetchPoll();
+if (poll) {
+  fs.writeFileSync(path.join(process.cwd(), 'data', 'poll.json'), JSON.stringify({ updatedAt: new Date().toISOString(), ...poll }, null, 2) + '\n');
+  console.log('poll votes', poll.total);
+}
