@@ -112,21 +112,28 @@
 
 <section class="wrap">
   <div class="sec-head">
-    <h2>已经有人在用</h2>
-    <p>下面这些是真实给相关仓库点过 Star 的 GitHub 用户。</p>
+    <h2>贡献者与 Star</h2>
+    <p>左边是真正往仓库里写过东西的人，右边是给项目点过 Star 的人。</p>
   </div>
-  <div class="card starwrap">
-    <div>
-      <div class="avatars" id="avatarWall">
-        <div class="av">…</div>
+  <div class="wallgrid" style="margin-top:18px">
+    <div class="card wall">
+      <div class="wall-head">
+        <b>贡献者</b>
+        <span class="pill"><span id="contribCount">—</span> 人</span>
       </div>
-      <p style="color:var(--muted);font-size:13px;margin:14px 0 0" id="starHint">正在读取 Star 数据…</p>
+      <div class="avatars" id="contribWall"><div class="av">…</div></div>
+      <p class="wall-hint" id="contribHint">正在读取贡献者…</p>
+      <a class="btn ghost" href="https://github.com/TanchiPanda/r6t5-docs-community/issues" target="_blank" rel="noopener">参与贡献 →</a>
     </div>
-    <div style="text-align:center">
-      <div style="font-size:34px;font-weight:700;letter-spacing:-1px"><span id="wallStars">—</span> ★</div>
-      <p style="color:var(--muted);font-size:12.5px;margin:4px 0 14px">来自 <span id="repoCount">4</span> 个仓库</p>
+
+    <div class="card wall">
+      <div class="wall-head">
+        <b>Star</b>
+        <span class="pill gold"><span id="starCount">—</span> ★</span>
+      </div>
+      <div class="avatars" id="starWall"><div class="av">…</div></div>
+      <p class="wall-hint" id="starHint">正在读取 Star 数据…</p>
       <a class="btn gold" href="https://github.com/TanchiPanda/r6t5-docs-community" target="_blank" rel="noopener">★ Star 支持这个项目</a>
-      <p style="color:var(--muted);font-size:11.5px;margin:10px 0 0">Star 后，你的头像会出现在这里</p>
     </div>
   </div>
 </section>

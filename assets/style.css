@@ -63,6 +63,14 @@ section{padding:54px 0}
 .edition li{margin:4px 0}
 /* star wall */
 .starwrap{display:flex;align-items:center;gap:26px;flex-wrap:wrap;justify-content:space-between}
+.wallgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:820px){.wallgrid{grid-template-columns:1fr}}
+.wall{padding:20px}
+.wall-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.wall-head b{font-size:16px}
+.pill{font-size:12px;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:2px 10px}
+.pill.gold{color:var(--gold);border-color:rgba(214,178,94,.4)}
+.wall-hint{color:var(--muted);font-size:12.5px;margin:14px 0 14px;line-height:1.6}
 .avatars{display:flex;flex-wrap:wrap;gap:9px;max-width:660px}
 .av{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:linear-gradient(135deg,#33406b,#46527d);display:flex;align-items:center;justify-content:center;font-size:13px;color:#b9c4e2;overflow:hidden;position:relative}
 .av img{width:100%;height:100%;object-fit:cover;display:block}
