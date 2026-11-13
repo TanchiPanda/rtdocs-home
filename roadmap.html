@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>路线图 · rtdocs</title>
+<meta name="description" content="rtdocs 已完成能力与后续计划：搜索、积分与 VIP、管理后台、多语言、支付通道。">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a class="brand" href="index.html"><span class="dot"></span>rtdocs</a>
+  <a class="navlink" href="index.html">首页</a>
+  <a class="navlink" href="guide.html">搭建指南</a>
+  <a class="navlink" href="roadmap.html">路线图</a>
+  <a class="navlink" href="pricing.html">授权与价格</a>
+  <a class="navlink" href="faq.html">常见问题</a>
+  <a class="btn sm gold" href="https://github.com/TanchiPanda/r6t5-docs-community" target="_blank" rel="noopener">★ Star</a>
+</div></nav>
+
+<header class="wrap hero" style="padding:64px 22px 10px;text-align:left">
+  <h1 style="font-size:34px">路线图</h1>
+  <p class="lede" style="margin:0">已上线的写事实，计划中的写方向，不承诺日期。</p>
+</header>
+
+<section class="wrap">
+  <div class="sec-head"><h2>已完成</h2><p>现在就能用的能力。</p></div>
+  <div class="card tl">
+    <div class="tli done"><h4>Markdown 文档站 + 可折叠目录树</h4><p>纯静态渲染，内容全部来自 <code>docs/</code> 与 <code>manifest.json</code>。</p></div>
+    <div class="tli done"><h4>⌘K 全文搜索</h4><p>标题 + 正文同时命中；Docker 版走服务端搜索，静态版在浏览器建索引。</p></div>
+    <div class="tli done"><h4>署名保护与「了解 Pro」入口</h4><p>逐字符校验 + 运行时看守，删改自动还原；授权后可关闭提示。</p></div>
+    <div class="tli done"><h4>Docker 化与双形态同镜像</h4><p>同一镜像跑社区 / 专业，后台输入密钥即切档；启动前做版权完整性门禁。</p></div>
+    <div class="tli done"><h4>图形化管理后台</h4><p>目录树、预览链接、全文与超链接编辑、站点信息与署名。</p></div>
+    <div class="tli done"><h4>域名 / 仓库授权</h4><p>DNS TXT 验证域名、登记授权仓库，按请求 Host 判定。</p></div>
+    <div class="tli done"><h4>文档积分 v1 → v2</h4><p>按篇定价、免费比例、站内邮箱注册、VIP 按积分支付、兑换码充值。</p></div>
+    <div class="tli done"><h4>Issue 模板</h4><p>Bug 反馈与功能请求表单，环境字段结构化。</p></div>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="sec-head"><h2>进行中</h2><p>正在做的，近期可见。</p></div>
+  <div class="card tl">
+    <div class="tli"><h4>项目官网（本站）</h4><p>介绍、功能对比、搭建指南、路线图与 Star 墙，统一引流入口。</p></div>
+    <div class="tli"><h4>授权后台自助化</h4><p>把域名验证、仓库登记、密钥激活收敛到同一个面板，减少手工沟通。</p></div>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="sec-head"><h2>计划中</h2><p>方向明确，细节会边做边定。</p></div>
+  <div class="card tl">
+    <div class="tli plan"><h4>支付通道</h4><p>在积分外面接一层真实支付：回调验签后调用积分发放，仍不碰提现。</p></div>
+    <div class="tli plan"><h4>多语言站点</h4><p>界面文案抽表，英文站点与文档目录双语并存。</p></div>
+    <div class="tli plan"><h4>主题与版式</h4><p>内置几套排版主题，后台可切换，不影响署名校验。</p></div>
+    <div class="tli plan"><h4>内容版本与发布预览</h4><p>草稿 → 预览链接 → 发布，避免直接改线上文档。</p></div>
+    <div class="tli plan"><h4>更细的权限</h4><p>按分组成员控制可读范围，而不只是单篇价格。</p></div>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="sec-head"><h2>想法阶段</h2><p>欢迎在 Issue 里投票或直接提方案。</p></div>
+  <div class="grid g3">
+    <div class="card"><h3>文档内嵌交互组件</h3><p>可运行的代码块、参数试算器。</p></div>
+    <div class="card"><h3>访问统计面板</h3><p>哪篇最常被读、哪篇最多人卡在锁定处。</p></div>
+    <div class="card"><h3>导出为 PDF / 静态书</h3><p>一键导出整站或某个分组。</p></div>
+  </div>
+  <div class="cta" style="justify-content:flex-start;margin-top:20px">
+    <a class="btn primary" href="https://github.com/TanchiPanda/r6t5-docs-community/issues/new?template=feature_request.yml" target="_blank" rel="noopener">提一个功能请求</a>
+  </div>
+</section>
+
+<footer><div class="wrap"><div class="copy">© 2026 rtdocs · <a href="index.html">返回首页</a></div></div></footer>
+<script src="assets/site.js"></script>
+</body>
+</html>

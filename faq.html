@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>常见问题 · rtdocs</title>
+<meta name="description" content="rtdocs 常见问题：署名能不能去掉、授权怎么验证、积分怎么接、能不能商用、数据放哪。">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a class="brand" href="index.html"><span class="dot"></span>rtdocs</a>
+  <a class="navlink" href="index.html">首页</a>
+  <a class="navlink" href="guide.html">搭建指南</a>
+  <a class="navlink" href="roadmap.html">路线图</a>
+  <a class="navlink" href="pricing.html">授权与价格</a>
+  <a class="navlink" href="faq.html">常见问题</a>
+  <a class="btn sm gold" href="https://github.com/TanchiPanda/r6t5-docs-community" target="_blank" rel="noopener">★ Star</a>
+</div></nav>
+
+<header class="wrap hero" style="padding:64px 22px 10px;text-align:left">
+  <h1 style="font-size:34px">常见问题</h1>
+  <p class="lede" style="margin:0">关于署名、授权、积分和数据，最常见的十个问题。</p>
+</header>
+
+<section class="wrap">
+  <details open><summary>社区版可以去掉页脚署名吗？</summary><p>不行。社区版要求保留「本站由 r6t5-docs 提供支持」这段署名与「了解 Pro」入口，且逐字符校验，删改会被运行时自动还原。需要去掉提示或自定义署名，请获取专业版授权。</p></details>
+  <details><summary>只删掉「了解 Pro」按钮可以吗？</summary><p>也不可以。按钮和署名一起受保护：删掉、隐藏、改成别的文案或链接都会被判定为篡改并重建。授权版本才会把入口一并隐藏。</p></details>
+  <details><summary>改过版权但没授权，会怎样？</summary><p>Docker 版在启动时比对站点文件与镜像原版的哈希，发现被改且未授权会打印差异并直接退出，不提供服务；运行期被改的请求返回 503。改回去或激活授权即可恢复。</p></details>
+  <details><summary>域名授权为什么要加 TXT 记录？</summary><p>为了证明你确实控制这个域名。系统只校验 <code>_r6t5-verify.你的域名</code> 这条 TXT 的值是否等于 <code>r6t5-verify=&lt;token&gt;</code>，不检查域名是否存在、也不看 A/CNAME。</p></details>
+  <details><summary>一个授权能用在多个站点吗？</summary><p>授权绑定具体域名或仓库。已验证的域名覆盖它自身与子域；多个站点需要分别授权，或把它们登记在同一个授权下的域名列表里。</p></details>
+  <details><summary>积分系统必须用 Supabase 吗？</summary><p>目前是。后台填 Supabase URL 与 anon key，执行 <code>sql/points.sql</code> 与 <code>sql/points_v2.sql</code> 就能用。账户、积分、解锁记录、VIP 到期都存在你自己的项目里。</p></details>
+  <details><summary>只填了比例没填 Supabase 会怎样？</summary><p>文档仍会按比例锁住，并提示「请联系管理员完善积分系统（管理员邮箱）」。社区版则完全不锁文、不弹窗。</p></details>
+  <details><summary>能充值人民币或提现吗？</summary><p>不提供。积分只能通过兑换码、管理员发放，或你自己接的支付回调入账。这样不涉及资金通道与提现合规。</p></details>
+  <details><summary>可以商用吗？</summary><p>可以。社区版可用于商业站点的展示，但不能去署名；专业版与订制版按授权范围商用。具体条款见仓库 LICENSE。</p></details>
+  <details><summary>我的文档会被上传到你们服务器吗？</summary><p>不会。静态版是纯前端，Docker 版数据都在你自己的数据卷里；只有积分与账户数据放在你配置的 Supabase 项目中。</p></details>
+  <div class="cta" style="justify-content:flex-start;margin-top:22px">
+    <a class="btn primary" href="https://github.com/TanchiPanda/r6t5-docs-community/issues/new/choose" target="_blank" rel="noopener">还有问题，去提 Issue</a>
+  </div>
+</section>
+
+<footer><div class="wrap"><div class="copy">© 2026 rtdocs · <a href="index.html">返回首页</a></div></div></footer>
+<script src="assets/site.js"></script>
+</body>
+</html>

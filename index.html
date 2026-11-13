@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>rtdocs · 把 Markdown 变成可托管、可计费、可授权的文档站</title>
+<meta name="description" content="rtdocs（r6t5-docs）是一套零依赖的 Markdown 文档站方案：静态免费版、专业版分发包、Docker 自托管版，内置全文搜索、账户积分、VIP 与图形化管理后台。">
+<meta property="og:title" content="rtdocs · Markdown 文档站方案">
+<meta property="og:description" content="静态 / 专业版 / Docker 三形态，内置搜索、积分与 VIP、管理后台。">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html"><span class="dot"></span>rtdocs</a>
+    <a class="navlink" href="index.html">首页</a>
+    <a class="navlink" href="guide.html">搭建指南</a>
+    <a class="navlink" href="roadmap.html">路线图</a>
+    <a class="navlink" href="pricing.html">授权与价格</a>
+    <a class="navlink" href="faq.html">常见问题</a>
+    <a class="btn sm gold ghbtn" id="starBtn" href="https://github.com/TanchiPanda/r6t5-docs-community" target="_blank" rel="noopener">★ <span id="starBtnNum">Star</span></a>
+  </div>
+</nav>
+
+<header class="hero wrap">
+  <span class="pill"><span class="live"></span>零依赖 · 纯静态可跑 · Docker 一条命令起来</span>
+  <h1>把你的 Markdown<br><span class="grad">变成可托管、可计费、可授权</span>的文档站</h1>
+  <p class="lede">rtdocs 是一套自带目录树、⌘K 全文搜索、署名保护、账户积分与 VIP 的文档站方案。静态免费，专业版可分发包，Docker 版带图形化后台。</p>
+  <div class="cta">
+    <a class="btn primary" href="guide.html">快速开始 →</a>
+    <a class="btn" href="https://github.com/TanchiPanda/r6t5-docs-community" target="_blank" rel="noopener">在 GitHub 上看源码</a>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="stats">
+    <div class="stat"><b id="statStars">—</b><span>GitHub Star</span></div>
+    <div class="stat"><b id="statForks">—</b><span>Fork</span></div>
+    <div class="stat"><b>3</b><span>部署形态</span></div>
+    <div class="stat"><b>0</b><span>运行时依赖</span></div>
+  </div>
+</div>
+
+<section class="wrap">
+  <div class="sec-head">
+    <h2>三种形态，同一套内容</h2>
+    <p>从随便一个静态托管，到能收费的自托管站点，按需升级，文档不用迁移。</p>
+  </div>
+  <div class="grid g3">
+    <div class="card edition">
+      <div class="top"><h3>社区版</h3><span class="badge free">免费开源</span></div>
+      <p>fork 仓库，GitHub Pages 直接上线。</p>
+      <ul>
+        <li>目录树 + ⌘K 全文搜索</li>
+        <li>署名自动恢复，删改会被还原</li>
+        <li>零依赖、零构建、零后端</li>
+      </ul>
+      <a class="btn sm" style="margin-top:auto" href="https://github.com/TanchiPanda/r6t5-docs-community" target="_blank" rel="noopener">获取社区版</a>
+    </div>
+    <div class="card edition">
+      <div class="top"><h3>专业版 / 订制版</h3><span class="badge pro">授权分发</span></div>
+      <p>拿到 zip 即用，隐藏推广提示，署名可改。</p>
+      <ul>
+        <li>按篇定价，积分 / VIP 解锁</li>
+        <li>站内邮箱注册，Supabase 驱动</li>
+        <li>按域名或仓库授权，支持多站</li>
+      </ul>
+      <a class="btn sm gold" style="margin-top:auto" href="pricing.html">了解授权</a>
+    </div>
+    <div class="card edition">
+      <div class="top"><h3>Docker 自托管</h3><span class="badge">镜像</span></div>
+      <p>一条命令起服务，带管理后台。</p>
+      <ul>
+        <li>图形化管理目录树与预览链接</li>
+        <li>在线编辑全部文本与超链接</li>
+        <li>启动校验：改过版权没授权就不启动</li>
+      </ul>
+      <a class="btn sm" style="margin-top:auto" href="guide.html#docker">部署 Docker 版</a>
+    </div>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="sec-head">
+    <h2>内置能力</h2>
+    <p>不是“能显示 Markdown”那么简单，是把运营文档站要用的东西都做进去了。</p>
+  </div>
+  <div class="grid g3">
+    <div class="card"><h3>⌘K 全文搜索</h3><p>标题与正文同时命中，方向键选择、回车跳转；付费文档只按标题命中，不泄露正文。</p></div>
+    <div class="card"><h3>按篇定价</h3><p>每篇单独设价格，0 或可读率 100% 自动免费；未解锁只放出设定比例。</p></div>
+    <div class="card"><h3>账户与积分</h3><p>站内邮箱注册即开积分账户，积分支付 VIP，仅对当前站点生效。</p></div>
+    <div class="card"><h3>图形化后台</h3><p>目录树、预览链接、全部文本与超链接、署名都能在后台改，不用改代码。</p></div>
+    <div class="card"><h3>署名保护</h3><p>社区版逐字符校验署名与「了解 Pro」入口，删改即还原；授权后可关闭提示。</p></div>
+    <div class="card"><h3>授权可验证</h3><p>产品密钥、DNS TXT 域名验证、授权仓库三种方式，按请求 Host 判定。</p></div>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="sec-head">
+    <h2>已经有人在用</h2>
+    <p>下面这些是真实给相关仓库点过 Star 的 GitHub 用户。</p>
+  </div>
+  <div class="card starwrap">
+    <div>
+      <div class="avatars" id="avatarWall">
+        <div class="av">…</div>
+      </div>
+      <p style="color:var(--muted);font-size:13px;margin:14px 0 0" id="starHint">正在读取 Star 数据…</p>
+    </div>
+    <div style="text-align:center">
+      <div style="font-size:34px;font-weight:700;letter-spacing:-1px"><span id="wallStars">—</span> ★</div>
+      <p style="color:var(--muted);font-size:12.5px;margin:4px 0 14px">来自 <span id="repoCount">4</span> 个仓库</p>
+      <a class="btn gold" href="https://github.com/TanchiPanda/r6t5-docs-community" target="_blank" rel="noopener">★ Star 支持这个项目</a>
+      <p style="color:var(--muted);font-size:11.5px;margin:10px 0 0">Star 后，你的头像会出现在这里</p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="sec-head">
+    <h2>三分钟跑起来</h2>
+    <p>想做静态站就 fork，想做收费站就起容器。</p>
+  </div>
+  <div class="card steps">
+    <div class="step"><div class="n">1</div><div><h4>fork 社区版仓库</h4><p>把 <code>docs/</code> 换成你的 Markdown，改 <code>manifest.json</code>，推送即上线。</p></div></div>
+    <div class="step"><div class="n">2</div><div><h4>或者起一个自托管容器</h4><p>数据卷挂出来，首启自动生成管理员密码。</p>
+<pre>docker run -d --name r6t5 -p 8080:8080 \
+  -v r6t5-data:/data \
+  ghcr.io/tanchipanda/r6t5-docs-docker:latest<span class="cp" data-copy="docker run -d --name r6t5 -p 8080:8080 -v r6t5-data:/data ghcr.io/tanchipanda/r6t5-docs-docker:latest">复制</span></pre>
+    </div></div>
+    <div class="step"><div class="n">3</div><div><h4>在后台填授权与积分</h4><p>打开 <code>/admin</code>，输入产品密钥，再填 Supabase URL 与 anon key，文档即可按篇计费。</p></div></div>
+  </div>
+  <div class="cta" style="margin-top:22px"><a class="btn primary" href="guide.html">查看完整部署指南</a></div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h5>rtdocs</h5>
+        <p style="margin:0;font-size:13px">零依赖的 Markdown 文档站方案：静态、专业版、自托管三种形态，同一套内容。</p>
+      </div>
+      <div><h5>文档</h5>
+        <a href="guide.html">搭建指南</a><a href="roadmap.html">路线图</a><a href="faq.html">常见问题</a>
+      </div>
+      <div><h5>仓库</h5>
+        <a href="https://github.com/TanchiPanda/r6t5-docs-community" target="_blank" rel="noopener">r6t5-docs-community</a>
+        <a href="https://github.com/TanchiPanda/r6t5-docs-docker" target="_blank" rel="noopener">r6t5-docs-docker</a>
+        <a href="https://github.com/TanchiPanda/r6t5-docs" target="_blank" rel="noopener">r6t5-docs</a>
+      </div>
+      <div><h5>支持</h5>
+        <a href="https://github.com/TanchiPanda/r6t5-docs-community/issues/new/choose" target="_blank" rel="noopener">报 Bug / 提需求</a>
+        <a href="pricing.html">获取授权</a>
+      </div>
+    </div>
+    <div class="copy">© 2026 rtdocs · 数据来自 GitHub，每 6 小时更新一次 · <span id="updatedAt"></span></div>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
+</body>
+</html>

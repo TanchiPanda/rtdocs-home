@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>授权与价格 · rtdocs</title>
+<meta name="description" content="rtdocs 社区版免费；专业版按域名或仓库授权，隐藏推广提示、署名可改；订制版按需求评估。">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a class="brand" href="index.html"><span class="dot"></span>rtdocs</a>
+  <a class="navlink" href="index.html">首页</a>
+  <a class="navlink" href="guide.html">搭建指南</a>
+  <a class="navlink" href="roadmap.html">路线图</a>
+  <a class="navlink" href="pricing.html">授权与价格</a>
+  <a class="navlink" href="faq.html">常见问题</a>
+  <a class="btn sm gold" href="https://github.com/TanchiPanda/r6t5-docs-community" target="_blank" rel="noopener">★ Star</a>
+</div></nav>
+
+<header class="wrap hero" style="padding:64px 22px 10px;text-align:left">
+  <h1 style="font-size:34px">授权与价格</h1>
+  <p class="lede" style="margin:0">社区版永久免费；需要去掉推广提示、改署名、用后台与积分，走专业版授权。</p>
+</header>
+
+<section class="wrap">
+  <div class="grid g3">
+    <div class="card edition">
+      <div class="top"><h3>社区版</h3><span class="badge free">免费</span></div>
+      <p>开源可用，适合个人与公开文档。</p>
+      <ul>
+        <li>署名与「了解 Pro」入口必须保留</li>
+        <li>不可去除推广提示</li>
+        <li>可用于商业站点的展示</li>
+      </ul>
+      <a class="btn sm" style="margin-top:auto" href="https://github.com/TanchiPanda/r6t5-docs-community" target="_blank" rel="noopener">直接使用</a>
+    </div>
+    <div class="card edition">
+      <div class="top"><h3>专业版</h3><span class="badge pro">授权</span></div>
+      <p>按域名或仓库授权，一次授权对应具体站点。</p>
+      <ul>
+        <li>隐藏推广提示，署名可自定义</li>
+        <li>Docker 后台、积分与 VIP 全功能</li>
+        <li>支持按篇定价、账户体系</li>
+      </ul>
+      <a class="btn sm gold" style="margin-top:auto" href="https://github.com/TanchiPanda/r6t5-docs-community/issues/new?template=feature_request.yml" target="_blank" rel="noopener">联系获取授权</a>
+    </div>
+    <div class="card edition">
+      <div class="top"><h3>订制版</h3><span class="badge">按需</span></div>
+      <p>深度改版、私有化部署与定制功能。</p>
+      <ul>
+        <li>专属版式与品牌视觉</li>
+        <li>对接内部系统 / 单点登录</li>
+        <li>交付源码与部署文档</li>
+      </ul>
+      <a class="btn sm" style="margin-top:auto" href="https://github.com/TanchiPanda/r6t5-docs-community/issues/new?template=feature_request.yml" target="_blank" rel="noopener">聊聊需求</a>
+    </div>
+  </div>
+  <p style="color:var(--muted);font-size:13px;margin-top:14px">具体价格按站点数量与使用场景沟通，不在此公开报价。</p>
+</section>
+
+<section class="wrap">
+  <div class="sec-head"><h2>授权方式</h2><p>三种任选，效果一致；一个授权只对其对应的站点生效。</p></div>
+  <div class="card">
+    <table>
+      <tr><th style="width:130px">方式</th><th>怎么用</th><th>适用</th></tr>
+      <tr><td>产品密钥</td><td>后台「授权状态」输入 15 位密钥，立即生效</td><td>单台部署、私有服务器</td></tr>
+      <tr><td>域名验证</td><td>后台添加域名 → 在 DNS 加 TXT：<code>_r6t5-verify.域名</code> = <code>r6t5-verify=&lt;token&gt;</code></td><td>对外站点、多子域</td></tr>
+      <tr><td>授权仓库</td><td>后台填 <code>owner/repo</code>，该仓库的部署自动判为专业版</td><td>从仓库直接部署、Pages</td></tr>
+    </table>
+    <p style="color:var(--muted);font-size:13px;margin:12px 0 0">域名只校验 TXT 记录的值是否匹配，不检查域名是否存在、也不看 A/CNAME 指向。</p>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="sec-head"><h2>授权前后对比</h2></div>
+  <div class="card">
+    <table>
+      <tr><th>能力</th><th>社区版</th><th>专业版</th></tr>
+      <tr><td>文档站与目录树</td><td class="y">✓</td><td class="y">✓</td></tr>
+      <tr><td>⌘K 全文搜索</td><td class="y">✓</td><td class="y">✓</td></tr>
+      <tr><td>署名保护 / 自动还原</td><td class="y">✓</td><td class="y">✓（可关闭提示）</td></tr>
+      <tr><td>隐藏推广提示</td><td class="n">✕</td><td class="y">✓</td></tr>
+      <tr><td>自定义署名</td><td class="n">✕</td><td class="y">✓</td></tr>
+      <tr><td>图形化管理后台</td><td class="n">✕</td><td class="y">✓</td></tr>
+      <tr><td>按篇定价 / 积分 / VIP</td><td class="n">✕</td><td class="y">✓</td></tr>
+      <tr><td>多域名 / 多仓库授权</td><td class="n">✕</td><td class="y">✓</td></tr>
+    </table>
+  </div>
+</section>
+
+<footer><div class="wrap"><div class="copy">© 2026 rtdocs · <a href="index.html">返回首页</a></div></div></footer>
+<script src="assets/site.js"></script>
+</body>
+</html>

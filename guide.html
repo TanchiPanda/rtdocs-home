@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>搭建指南 · rtdocs</title>
+<meta name="description" content="rtdocs 三种部署方式：GitHub Pages 静态站、专业版 zip 分发包、Docker 自托管，含授权、Supabase 积分与常见坑。">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a class="brand" href="index.html"><span class="dot"></span>rtdocs</a>
+  <a class="navlink" href="index.html">首页</a>
+  <a class="navlink" href="guide.html">搭建指南</a>
+  <a class="navlink" href="roadmap.html">路线图</a>
+  <a class="navlink" href="pricing.html">授权与价格</a>
+  <a class="navlink" href="faq.html">常见问题</a>
+  <a class="btn sm gold" href="https://github.com/TanchiPanda/r6t5-docs-community" target="_blank" rel="noopener">★ Star</a>
+</div></nav>
+
+<header class="wrap hero" style="padding:64px 22px 10px;text-align:left">
+  <h1 style="font-size:34px">搭建指南</h1>
+  <p class="lede" style="margin:0">从零到上线：静态站 3 分钟，Docker 版 5 分钟，专业版解压即用。</p>
+</header>
+
+<section class="wrap">
+  <div class="sec-head"><h2>方式一：静态站（免费）</h2><p>适合公开文档、产品手册、个人知识库。</p></div>
+  <div class="card steps">
+    <div class="step"><div class="n">1</div><div><h4>Fork 模板</h4><p>fork <code>TanchiPanda/r6t5-docs-community</code>，把仓库名改成你的站点名。</p></div></div>
+    <div class="step"><div class="n">2</div><div><h4>替换内容</h4><p>把 <code>docs/</code> 里的 Markdown 换成你的；在 <code>manifest.json</code> 里登记目录与文件路径。</p></div></div>
+    <div class="step"><div class="n">3</div><div><h4>开启 Pages</h4><p>Settings → Pages → Source 选 <code>main</code> / <code>root</code>，保存后访问 <code>https://&lt;用户名&gt;.github.io/&lt;仓库名&gt;/</code>。</p></div></div>
+  </div>
+  <div class="note" style="color:var(--muted);font-size:13px;margin-top:12px">静态版是纯前端渲染：搜索索引在浏览器里按 manifest 建立，锁定只是视觉截断，源文件仍可下载。要真正防抓原文，用 Docker 版。</div>
+</section>
+
+<section class="wrap" id="zip">
+  <div class="sec-head"><h2>方式二：专业版 zip</h2><p>已经有分发包时，解压即用，不需要服务器。</p></div>
+  <div class="card">
+    <p style="color:var(--muted);margin:0 0 10px;font-size:13.5px">解压后目录里通常包含 <code>index.html</code>、<code>manifest.json</code>、<code>docs/</code>、<code>sql/</code>。把整目录上传到任意静态托管（GitHub Pages、Cloudflare Pages、Vercel、对象存储）即可。</p>
+    <p style="color:var(--muted);margin:0;font-size:13.5px">想开积分 / VIP：在 <code>manifest.json</code> 的 <code>points</code> 里填 Supabase URL 与 anon key，再在 Supabase SQL Editor 执行 <code>sql/points.sql</code> 与 <code>sql/points_v2.sql</code>。</p>
+  </div>
+</section>
+
+<section class="wrap" id="docker">
+  <div class="sec-head"><h2>方式三：Docker 自托管</h2><p>带管理后台、服务端截断、积分与 VIP 的完整版。</p></div>
+  <div class="card">
+    <h3>一条命令启动</h3>
+<pre>docker run -d --name r6t5 -p 8080:8080 \
+  -v r6t5-data:/data \
+  ghcr.io/tanchipanda/r6t5-docs-docker:latest<span class="cp" data-copy="docker run -d --name r6t5 -p 8080:8080 -v r6t5-data:/data ghcr.io/tanchipanda/r6t5-docs-docker:latest">复制</span></pre>
+    <p style="color:var(--muted);font-size:13.5px;margin:12px 0 0">首次启动后查看日志里的管理员密码：</p>
+<pre>docker logs r6t5 2>&1 | grep -A2 "管理员"<span class="cp" data-copy='docker logs r6t5 2>&1 | grep -A2 "管理员"'>复制</span></pre>
+    <p style="color:var(--muted);font-size:13.5px;margin:12px 0 0">也可以直接读数据卷里的文件：</p>
+<pre>docker exec r6t5 cat /data/ADMIN_PASSWORD.txt<span class="cp" data-copy="docker exec r6t5 cat /data/ADMIN_PASSWORD.txt">复制</span></pre>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+    <h3>docker-compose</h3>
+<pre>services:
+  r6t5:
+    image: ghcr.io/tanchipanda/r6t5-docs-docker:latest
+    ports: ["8080:8080"]
+    environment:
+      TZ: Asia/Shanghai
+      # ADMIN_PASSWORD: 自定义管理员密码（可选）
+      # SUPABASE_SERVICE_KEY: 可选，后台用户管理用
+      # LICENSE_API: https://lic.r6t5.dpdns.org
+    volumes: ["./data:/data"]
+    restart: unless-stopped<span class="cp" data-copy="services:
+  r6t5:
+    image: ghcr.io/tanchipanda/r6t5-docs-docker:latest
+    ports: ['8080:8080']
+    volumes: ['./data:/data']
+    restart: unless-stopped">复制</span></pre>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+    <h3>后台能做什么（<code>/admin</code>）</h3>
+    <ul style="color:var(--muted);font-size:13.5px;padding-left:18px;margin:8px 0 0">
+      <li>输入产品密钥，激活专业版（隐藏推广提示、署名可改）</li>
+      <li>图形化编辑目录树（分组、顺序、标题、预览链接）</li>
+      <li>在线编辑每一篇的文本与超链接，保存即生效</li>
+      <li>按篇设置价格；配置积分 Supabase、VIP 档位、兑换码</li>
+      <li>添加授权域名（走 DNS TXT 验证）与授权仓库</li>
+    </ul>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+    <h3>授权怎么生效</h3>
+    <p style="color:var(--muted);font-size:13.5px;margin:8px 0 0">三种方式，任一满足即判定为专业版：</p>
+    <ul style="color:var(--muted);font-size:13.5px;padding-left:18px;margin:6px 0 0">
+      <li><b>产品密钥</b>：后台「授权状态」输入 15 位密钥</li>
+      <li><b>域名</b>：后台添加域名 → 按提示在 DNS 加一条 TXT（<code>_r6t5-verify.你的域名</code> = <code>r6t5-verify=&lt;token&gt;</code>），只看 TXT 值，不校验 A/CNAME</li>
+      <li><b>仓库</b>：后台填 <code>owner/repo</code>，该仓库的部署直接按专业版处理</li>
+    </ul>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+    <h3>启动完整性门禁</h3>
+    <p style="color:var(--muted);font-size:13.5px;margin:8px 0 0">容器启动时会比对站点文件与镜像原版的 sha256，并校验署名配置：<b style="color:var(--gold)">版权被改过但未授权</b>时直接打印差异并退出，不提供服务；已授权则只打印警告继续启动。运行期对被篡改且未授权的请求返回 503。</p>
+  </div>
+</section>
+
+<section class="wrap" id="points">
+  <div class="sec-head"><h2>接入积分与 VIP</h2><p>需要自己的 Supabase 项目，约 5 分钟。</p></div>
+  <div class="card steps">
+    <div class="step"><div class="n">1</div><div><h4>建项目拿 key</h4><p>在 Supabase 新建项目，Project Settings → API 复制 <code>URL</code> 与 <code>anon key</code>。</p></div></div>
+    <div class="step"><div class="n">2</div><div><h4>执行 SQL</h4><p>SQL Editor 里依次整段执行 <code>sql/points.sql</code> 与 <code>sql/points_v2.sql</code>（可重复执行）。</p></div></div>
+    <div class="step"><div class="n">3</div><div><h4>后台填写</h4><p>管理后台「文档积分」粘贴 URL 与 anon key，设置免费可读比例与默认价格，点「测试连接」。</p></div></div>
+    <div class="step"><div class="n">4</div><div><h4>发积分</h4><p>兑换码批量生成，或执行 <code>select public.r6t5_grant('用户UUID'::uuid, 100)</code>。系统不提供人民币充值/提现。</p></div></div>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="sec-head"><h2>常见坑</h2><p>部署时最容易踩的几件事。</p></div>
+  <div class="grid g2">
+    <div class="card"><h3>页面 404 / 空白</h3><p>静态版要在仓库根目录放 <code>index.html</code>；Pages 的 Source 选 root，不是 <code>/docs</code>。</p></div>
+    <div class="card"><h3>忘记管理员密码</h3><p>数据卷里的 <code>ADMIN_PASSWORD.txt</code> 就是密码；删掉该文件重启会重新生成，但会注销已登录会话。</p></div>
+    <div class="card"><h3>改了版权起不来</h3><p>未授权时改了站点署名或页脚，启动会退出。要么改回，要么在后台激活授权。</p></div>
+    <div class="card"><h3>积分不生效</h3><p>URL 或 anon key 少了、SQL 没执行、文档价格为 0，三者任一都会让文档直接免费。</p></div>
+  </div>
+</section>
+
+<footer><div class="wrap"><div class="copy">© 2026 rtdocs · <a href="index.html">返回首页</a></div></div></footer>
+<script src="assets/site.js"></script>
+</body>
+</html>
