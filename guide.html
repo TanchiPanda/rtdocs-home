@@ -95,6 +95,16 @@
     </ul>
   </div>
 
+      <div class="card" style="margin-top:16px">
+        <h3>站内右键菜单与 AI 对话</h3>
+        <p style="color:var(--muted);font-size:13.5px;margin:8px 0 0">站点页面右键会弹出站内菜单：AI 对话 / 复制 / 纠错 / 属性 / 显示更多选项。AI 需要后端，这里用 Cloudflare Workers AI：</p>
+        <pre>cd worker
+npx wrangler login
+npx wrangler deploy<span class="cp" data-copy="cd worker
+npx wrangler login
+npx wrangler deploy">复制</span></pre>
+        <p style="color:var(--muted);font-size:13.5px;margin:8px 0 0">部署后把地址填到 <code>manifest.json</code> 的 <code>ai.endpoint</code>（静态版）或后台「AI 接口地址」（Docker 版）。留空时该菜单项置灰，其余功能不受影响。Worker 源码见本仓库 <code>worker/</code>。</p>
+      </div>
   <div class="card" style="margin-top:16px">
     <h3>启动完整性门禁</h3>
     <p style="color:var(--muted);font-size:13.5px;margin:8px 0 0">容器启动时会比对站点文件与镜像原版的 sha256，并校验署名配置：<b style="color:var(--gold)">版权被改过但未授权</b>时直接打印差异并退出，不提供服务；已授权则只打印警告继续启动。运行期对被篡改且未授权的请求返回 503。</p>
