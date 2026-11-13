@@ -77,13 +77,19 @@
 
   async function loadPoll() {
     const box = el('pollBox');
-    if (!box) return;
+    const teaser = el('pollTeaserVotes');
+    if (!box && !teaser) return;
     let d = null;
     try {
       const r = await fetch('data/poll.json', { cache: 'no-cache' });
       if (r.ok) d = await r.json();
     } catch (e) {}
-    if (!d || !d.options) { box.innerHTML = '<p class="poll-empty">投票数据暂时读不到，点下面的按钮直接去 GitHub 投。</p>'; return; }
+    if (!d || !d.options) {
+      if (box) box.innerHTML = '<p class="poll-empty">投票数据暂时读不到，点下面的按钮直接去 GitHub 投。</p>';
+      return;
+    }
+    if (teaser) teaser.textContent = (d.total || 0) + ' 票';
+    if (!box) return;
     const link = el('pollLink');
     if (link && d.url) link.href = d.url;
     const total = d.total || 0;
