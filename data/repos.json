@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-14T04:00:11.977Z",
+  "updatedAt": "2026-11-14T07:20:48.670Z",
   "owner": "TanchiPanda",
   "repos": [
     {
@@ -14,7 +14,12 @@
       "url": "https://github.com/TanchiPanda/r6t5-docs-community",
       "stars": 1,
       "forks": 0,
-      "stargazers": []
+      "stargazers": [
+        {
+          "login": "TanchiPanda",
+          "avatar_url": "https://avatars.githubusercontent.com/u/159755169?v=4"
+        }
+      ]
     },
     {
       "name": "r6t5-docs-docker",

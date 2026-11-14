@@ -1,9 +1,9 @@
 {
-  "updatedAt": "2026-11-13T11:47:18.729Z",
+  "updatedAt": "2026-11-14T07:20:49.493Z",
   "url": "https://github.com/TanchiPanda/r6t5-docs-community/discussions/2",
   "title": "你觉得这个项目值多少钱？",
   "question": "请选择",
-  "total": 0,
+  "total": 1,
   "options": [
     {
       "label": "¥1～¥10",
@@ -15,7 +15,7 @@
     },
     {
       "label": "¥25～¥50",
-      "votes": 0
+      "votes": 1
     },
     {
       "label": "¥50～¥100",
