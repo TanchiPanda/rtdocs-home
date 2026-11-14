@@ -27,13 +27,22 @@ export default {
       { role: 'user', content: (doc ? `【文档】${doc}\n` : '') + (context ? `【片段】\n${context}\n` : '') + `【问题】${question}` },
     ];
 
-    try {
-      const out = await env.AI.run('@cf/meta/llama-3.1-8b-instruct', { messages, max_tokens: 700 });
-      const text = (out && (out.response || out.result || '')) || '';
-      return json({ text: String(text).trim() || '（模型没有返回内容）' });
-    } catch (e) {
-      return json({ error: 'AI 调用失败: ' + (e && e.message ? e.message : 'unknown') }, 502);
+    const MODELS = [
+      '@cf/meta/llama-3.3-70b-instruct-fp8-fast',
+      '@cf/meta/llama-3.1-8b-instruct-fp8',
+      '@cf/qwen/qwen3-30b-a3b-fp8',
+    ];
+    let lastErr = '';
+    for (const model of MODELS) {
+      try {
+        const out = await env.AI.run(model, { messages, max_tokens: 700 });
+        const text = (out && (out.response || out.result || '')) || '';
+        if (String(text).trim()) return json({ text: String(text).trim(), model });
+      } catch (e) {
+        lastErr = (e && e.message) ? e.message : 'unknown';
+      }
     }
+    return json({ error: 'AI 调用失败: ' + lastErr }, 502);
   },
 };
 
