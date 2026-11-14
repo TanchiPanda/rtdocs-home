@@ -101,6 +101,11 @@
       const r = await fetch('data/poll.json', { cache: 'no-cache' });
       if (r.ok) d = await r.json();
     } catch (e) {}
+    if (d && d.closed) {
+      if (box) box.innerHTML = '<p class="poll-empty">价格已定，投票已关闭。</p>';
+      if (teaser) teaser.textContent = '';
+      return;
+    }
     if (!d || !d.options) {
       if (box) box.innerHTML = '<p class="poll-empty">投票数据暂时读不到，点下面的按钮直接去 GitHub 投。</p>';
       return;
